@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Movies</title>
+    
+</head>
+<body>
+    <!--search bar -->
+    <div class="top-my container col-md-5">
+        <input type="text" placeholder="Search..." id="search-my" autocomplete="off">
+        <button id='search-btn-my'>Search</button>
+    </div>
+    
+    
+
+    <!-- floating button -->
+    <a class="float" id="randomButton">
+        <i class="fa fa-random my-float"></i>
+    </a>
+
+
+    <div class="container">
+        <div class="row movies">
+
+        </div>
+    </div>
+
+
+    <!-- overlay of floating button -->
+    <div id="myGenres" class="genres">
+        <div class="radio-genres" id="radio-genres">
+            <span class="close">&times;</span>
+            <h2>Movie roulette</h2>
+            <hr>
+            <div>
+                <h3>Select genre:</h2>
+
+                    <div id="genres-buttons">
+
+                    </div>
+
+
+                <div class="roll-button">
+                    <button id="roll-button">Roll</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
+
+
+
+<!-- my api key https://api.themoviedb.org/3/movie/550?api_key=5e7d0c061419626c5f26ce46b7738aa0-->

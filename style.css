@@ -1,0 +1,160 @@
+body {
+    background: rgb(51,199,79) no-repeat;
+    background: linear-gradient(90deg, rgba(51,199,79,1) 11%, rgba(1,139,116,1) 81%);
+    display: block;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* search bar */
+
+.top-my{
+    margin-top: 10px;
+    display: flex;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#search-my{
+    margin: 5px;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    border-width: 0px;
+    border-radius: 5px;
+}
+
+/*  search-btn*/
+
+#search-btn-my:hover{
+    background-color: rgb(10, 233, 85);
+}
+
+#search-btn-my{
+    margin: 5px;
+    height: auto;
+    width: auto;
+    padding:10px;
+    border-width: 0px;
+    border-radius: 10px;
+    transition: ease-in 0.4s;
+}
+
+
+/* floating button */
+.float:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.float{
+    transition-duration: 0.4s;
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.genres {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+.radio-genres {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* button and labels */
+.button-div{
+    margin: 3px;
+}
+
+/* roll button */
+.roll-button{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#roll-button:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+
+#roll-button{
+    height: 10%;
+    width: 40%;
+    transition-duration: 0.4s;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:5px;
+    text-align:center;
+    font-size: 18px;
+	box-shadow: 2px 2px 3px #999;
+}
+
+
+/* movies */
+
+.movies{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin: 0;
+}
+
+.blocks{
+    width: 100%;
+    height: auto;
+    background-color: black;
+    color: white;
+}
+
+#poster-img, #movie-title{
+    margin: 10px;
+    width: 100%;
+    height: auto;
+}
