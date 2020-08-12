@@ -1,9 +1,10 @@
 let idGenres = document.getElementById('myGenres');
 let randButton = document.getElementById('randomButton');
-let span = document.getElementsByClassName('close')[0];
+let close = document.getElementsByClassName('close')[0];
 let radioGenres = document.getElementsByClassName('radio-genres');
 
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w200';
+const API_KEY = '5e7d0c061419626c5f26ce46b7738aa0';
 
 
 const randomMovieBtn =(e)=>{
@@ -34,12 +35,12 @@ const randomMovieBtn =(e)=>{
 
 }
 
-//calling function, and closing overlay
+// calling function, and closing overlay
 randButton.onclick = () => {
     idGenres.style.display = "block";
     randomMovieBtn();
   }
-span.onclick = () => {
+close.onclick = () => {
     idGenres.style.display='none';
 }
 window.onclick = (event) => {
@@ -47,7 +48,6 @@ window.onclick = (event) => {
       idGenres.style.display = "none";
     }
 }
-
 
 //generating movies
 $(document).ready(()=>{
@@ -63,9 +63,12 @@ function showMovies(){
         movieTopRated.forEach(topRated => {
             console.log(topRated);
             movieParts += `
-                    <div class='text-center col-md-3 blocks'>
-                        <img src='${IMAGE_URL+topRated.poster_path}' id='poster-img' />
-                        <h5 id='movie-title'>${topRated.title}</h5>
+                    <div class='col-md-3'>
+                        <div class='blocks'>
+                            <div class='rating'>${topRated.vote_average}</div>
+                            <img src='${IMAGE_URL+topRated.poster_path}' id='poster-img' />
+                            <h5 id='movie-title'>${topRated.title} (${topRated.release_date.slice(0,4)})</h5>
+                        </div>
                     </div>
             `;
         });
