@@ -6,7 +6,6 @@ body {
 }
 
 /* search bar */
-
 .top-my{
     margin-top: 10px;
     display: flex;
@@ -26,12 +25,11 @@ body {
 }
 
 /*  search-btn*/
-
-#search-btn-my:hover, #sorting-button:hover{
+#search-btn-my:hover{
     background-color: rgb(10, 233, 85);
 }
 
-#search-btn-my, #sorting-button{
+#search-btn-my{
     margin: 5px;
     height: auto;
     width: auto;
@@ -40,8 +38,6 @@ body {
     border-radius: 10px;
     transition: ease-in 0.4s;
 }
-
-
 /* floating button */
 .float:hover{
     background-color: #4CAF50;
@@ -163,9 +159,7 @@ body {
 	box-shadow: 2px 2px 3px #999;
 }
 
-
 /* movies */
-
 .rating{
     right: -3%;
     top: 0;
@@ -185,7 +179,7 @@ body {
     padding: 10px;
 }
 
-#poster-img, #movie-title{
+#poster-img, #movie-title, #movie-language{
     width: 100%;
     height: auto;
     font-size: 15px;
@@ -199,4 +193,33 @@ body {
     background-color: #000;
     color: white;
     border-radius: 5px;
+    bottom: 10%;
+}
+
+/* load more movies */
+#loadMovies {
+    display: none;
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    left: 47.6%;
+    background-color:#0C9;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+}
+
+#loadButton{
+    margin-top: 19px;
+    display: inline-block;
+    font-size: inherit;
+}
+
+
+#loadMovies:hover {
+    transition: ease-in 0.4s;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
 }
