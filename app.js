@@ -22,7 +22,7 @@ const POPULAR_MOVIES = 'https://api.themoviedb.org/3/movie/popular?api_key=5e7d0
 
 //homepage
 home.onclick=()=>{
-    window.location.href='/index.html';
+    document.location.reload(true);
 }
 
 
