@@ -25,11 +25,11 @@ body {
 }
 
 /*  search-btn*/
-#search-btn-my:hover{
+#search-btn-my:hover, #home:hover{
     background-color: rgb(10, 233, 85);
 }
 
-#search-btn-my{
+#search-btn-my, #home{
     margin: 5px;
     height: auto;
     width: auto;
@@ -194,6 +194,7 @@ body {
     color: white;
     border-radius: 5px;
     bottom: 10%;
+    cursor: pointer;
 }
 
 /* load more movies */
@@ -222,4 +223,21 @@ body {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+}
+
+/* movie details */
+#details-img{
+    width: 100%;
+    height: auto;
+}
+
+.jumbotron{
+    padding-top: 15px;
+    background-color: black;
+    color: white;
+    margin: 10px;
+}
+
+.title{
+    margin:5px;
 }
