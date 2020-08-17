@@ -16,6 +16,7 @@ let genreButton = document.getElementById('roll-button');
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w200';
 const API_KEY = '5e7d0c061419626c5f26ce46b7738aa0';
 const POPULAR_MOVIES = 'https://api.themoviedb.org/3/movie/popular?api_key=5e7d0c061419626c5f26ce46b7738aa0&language=en-US&page=';
+const GET_GENRES = 'https://api.themoviedb.org/3/genre/movie/list?api_key=5e7d0c061419626c5f26ce46b7738aa0&language=en-US';
 
 
 //const TOP_RATED = 'https://api.themoviedb.org/3/movie/top_rated?api_key=5e7d0c061419626c5f26ce46b7738aa0&language=en-US&page=';
@@ -29,7 +30,7 @@ home.onclick=()=>{
 //random button
 const randomButtonGenre =()=>{
 
-    axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=5e7d0c061419626c5f26ce46b7738aa0&language=en-US')
+    axios.get(GET_GENRES)
     .then((res)=>{
         let genres = res.data.genres;
         let boxOfGenres= '';
@@ -69,15 +70,57 @@ window.onclick = (event) => {
     }
 }
 
-//find a random movie
+//random genre radio button on click
 genreButton.onclick=()=>{
     let genreName = document.getElementsByName('genre');
     for(let i=0;i<genreName.length;i++){
         if(genreName[i].checked){
-            //console.log(genreName[i].value);
+            axios.get(GET_GENRES)
+            .then((res)=>{
+                for(let j=0;j<res.data.genres.length;j++)
+                { 
+                    if(genreName[i].id === res.data.genres[j].name){
+                        //console.log(res.data.genres[j].id);
+                        findNumberOfPages(res.data.genres[j].id);
+                    }
+                }
+            })
         }
     }
 }
+
+//find how many pages of movies there is of some genre
+function findNumberOfPages(genreID){
+    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=5e7d0c061419626c5f26ce46b7738aa0&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres='+genreID)
+    .then((res)=>{
+        let numberOfPages = res.data.total_pages;
+        //console.log(numberOfPages);
+        let randomPage = Math.floor(Math.random()*(numberOfPages+1));
+        //console.log(randomPage);
+        findRandomMovie(genreID,randomPage);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+//find random movie on a random page
+function findRandomMovie(genreID,randomPage){
+    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=5e7d0c061419626c5f26ce46b7738aa0&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='+randomPage+'&with_genres='+genreID)
+    .then(res=>{
+        let numberOfMovies = res.data.results.length;
+        let randomMovieNumber = Math.floor(Math.random() *numberOfMovies);
+        let movieIdNumber = res.data.results[randomMovieNumber].id;
+        //console.log(res.data.results[randomMovieNumber])
+        //console.log(res.data.results);
+        //console.log(movieIdNumber);
+        movieDetails(movieIdNumber);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+
+
 
 //movie details
 function movieDetails(movieID){
@@ -105,7 +148,7 @@ function movieDetails(movieID){
             </div>
         `;
         //console.log(arrCompanies);
-
+        loadButton(1);
         $('.movies').html(displayMovieDetails);
     })
     .catch((err)=>{
@@ -140,7 +183,7 @@ function showMovies(pagenumber){
             </div>
             `;
         });
-        loadButton();
+        loadButton(PAGENUMBER);
         $('.movies').html(movieParts);
     })
     .catch(err=>{
@@ -178,7 +221,7 @@ function loadMoreMovies(urlMovies,pagenumber){
     })
 }
 
-function loadButton(){
+function loadButton(PAGENUMBER){
     //fuction for LOAD button on the end of page
     $(window).scroll(() => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -193,14 +236,13 @@ function loadButton(){
     $(document).ready(() => {
         $("#loadMovies").click((event)=> {
             event.preventDefault();
-            loadMoreMovies(POPULAR_MOVIES,PAGENUMBER)
-            PAGENUMBER=PAGENUMBER+1;
+            loadMoreMovies(POPULAR_MOVIES,PAGENUMBER++)
+            //PAGENUMBER=PAGENUMBER+1;
         });
     });
 }
 
 //searching movies
-
 //const SEARCH_MOVIES_BY_NAME = 'https://api.themoviedb.org/3/search/movie?api_key='+API_KEY+'&language=en-US&query='+searchInput+'&page=1&include_adult=false';
 searchButton.onclick=()=>{
     if(searchInput.value === ''){
